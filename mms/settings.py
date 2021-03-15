@@ -26,7 +26,7 @@ SECRET_KEY = '6@bsdk5%=c!1ibsj4=0_(3#kje&q(+cvl!@1zcj1i%7@-ut2+2'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['demo-mms.herokuapp.com']
 
 
 # Application definition
