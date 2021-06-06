@@ -1,0 +1,19 @@
+# get http://127.0.0.1:8000/api/v1/register/
+# Content-Type: application/json
+
+# {
+#     "email":"mahesh@g.com",
+#     "password":"123",
+#     "mobile_number":"7741016487"
+    
+# }
+put http://127.0.0.1:8000/api/v1/register/f25785ca-c66d-11eb-a480-842b2b871683
+Content-Type: application/json
+
+{
+    "email":"mahesh@g.com",
+    "password":"123",
+    "mobile_number":"7741016487",
+    "name":"mahesh"
+    
+}

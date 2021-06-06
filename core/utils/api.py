@@ -166,7 +166,7 @@ def modify_api_response(response):
     
     if "error" in response.data:
         modified_data["status"] = "FAIL"
-        modified_data["message"] = response.data.get("errors")[0].get("detail")
+        modified_data["message"] = response.data["error"].get('detail')
         modified_data["data"] = []
         # modified_data["errors"] = response.data.get("errors")
 

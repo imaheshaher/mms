@@ -11,6 +11,8 @@ class User(AbstractBaseUser,PermissionsMixin):
     email = models.EmailField(_('email adderss'),unique=True)
     mobile_number = models.CharField(max_length=30,null=True,blank=True)
     name= models.CharField(max_length=300)
+    join_date = models.DateField(auto_now_add=True)
+    is_active=models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
 
     USERNAME_FIELD = 'email'
@@ -18,6 +20,16 @@ class User(AbstractBaseUser,PermissionsMixin):
     objects=UserManager()
 
 
+
+class Customer(models.Model):
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    bio=models.CharField(max_length=500,blank=True,null=True)
+    
+
+
+class Vendor(models.Model):
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    
 
 # class Menu(models.Model):
 #     menu_name = models.CharField(max_length=30,blank=True,null=True)
