@@ -1,6 +1,7 @@
 from django.http.response import Http404
 from rest_framework.views import APIView
-from core.models import User
+from core import serializers
+from core.models import User,Customer,Vendor
 
 from rest_framework.response import Response
 from core.utils import MyAPIView
@@ -12,6 +13,9 @@ class UserViewSet(MyModelViewSet):
     queryset=User.objects.all()
     serializer_class=UserSerialilzer
 
+    def perform_create(self, serializer):
+        Customer.objects.create(user=serializer.instance)
+        return serializer.data
 
 
 class UserApiView(MyAPIView):
@@ -35,9 +39,11 @@ class UserApiView(MyAPIView):
     def post(self,request):
         serializer=UserSerialilzer(data=request.data)
         if serializer.is_valid():
+            print(request.data)
             serializer.save()
+            Customer.objects.create(user=serializer.instance)
             return Response(serializer.data)
-        return Response({"error":serializer.errors})
+        return Response({"data":serializer.errors})
 
     def put(self,request,pk):
         user=self.get_object(pk)
@@ -49,3 +55,9 @@ class UserApiView(MyAPIView):
    
 
 
+
+class CustomerViewSet(MyAPIView):
+    def get(self,request):
+        customer = Customer.objects.all()
+        serializer = userserializer.CustomerSerializer(customer,many=True)
+        return Response(serializer.data)

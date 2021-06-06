@@ -1,12 +1,21 @@
+from django.db.models import fields
+from core import models
+from core.models.usermodel import Customer
+from re import L
 from rest_framework import serializers
 from rest_framework.utils import field_mapping
 
 from core.models import User
 
 class UserSerialilzer(serializers.ModelSerializer):
+    customer=serializers.BooleanField('get_customer')
+    def get_customer(self,user):
+        print('user----',user)
+        return user
+
     class Meta:
         model=User
-        fields="__all__"
+        fields=('customer','email','password','name','mobile_number')
 
         
     def create(self, validated_data):
@@ -25,3 +34,12 @@ class UserSerialilzer(serializers.ModelSerializer):
                 setattr(instance, attr, value)
         instance.save()
         return instance
+
+
+
+
+class CustomerSerializer(serializers.ModelSerializer):
+    user = UserSerialilzer(read_only=True)
+    class Meta:
+        model= Customer
+        fields="__all__"

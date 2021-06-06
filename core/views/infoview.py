@@ -8,16 +8,16 @@ from rest_framework.viewsets import ModelViewSet
 
 class MessViewSet(ModelViewSet):
     serializer_class=MessSerializer
-    model = Mess
+    queryset= Mess.objects.all()
 
 class MenuViewSet(ModelViewSet):
     serializer_class=MenuSerializer
-    model = Menu
+    queryset= Menu.objects.all()
 
 class MessSubscriptionViewSet(ModelViewSet):
     serializer_class=MessSubsriptionSerializer
-    model = MessSubscription
+    queryset= MessSubscription.objects.all()
 
 class CustomerSubscriptionViewSet(ModelViewSet):
     serializer_class=CustomerSubsriptionSerializer
-    model = CustomerSubscription
+    queryset= CustomerSubscription.objects.all()

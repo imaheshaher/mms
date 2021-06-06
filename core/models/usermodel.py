@@ -22,12 +22,16 @@ class User(AbstractBaseUser,PermissionsMixin):
 
 
 class Customer(models.Model):
+    id=models.CharField(max_length=200,primary_key=True,default=uuid.uuid1)
+
     user=models.ForeignKey(User,on_delete=models.CASCADE)
     bio=models.CharField(max_length=500,blank=True,null=True)
     
 
 
 class Vendor(models.Model):
+    id=models.CharField(max_length=200,primary_key=True,default=uuid.uuid1)
+
     user=models.ForeignKey(User,on_delete=models.CASCADE)
     
 
