@@ -26,7 +26,7 @@ SECRET_KEY = '6@bsdk5%=c!1ibsj4=0_(3#kje&q(+cvl!@1zcj1i%7@-ut2+2'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['demo-mms.herokuapp.com']
+ALLOWED_HOSTS = ['demo-mms.herokuapp.com','127.0.0.1']
 
 
 # Application definition
@@ -86,7 +86,7 @@ WSGI_APPLICATION = 'mms.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': BASE_DIR / 'db1.sqlite3',
     }
 }
 
